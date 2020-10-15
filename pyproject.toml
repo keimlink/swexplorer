@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "swexplorer"
+version = "0.1.0"
+description = "Django app to explore Star Wars data"
+authors = ["Markus Zapke-Gründemann <markus@keimlink.de>"]
+license = "BSD-3-Clause"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+Django = {version = "3.1.2", extras = ["argon2"]}
+
+[tool.poetry.dev-dependencies]
+django-debug-toolbar = "3.1.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.isort]
+profile = "black"
+line_length = 99
+skip = ["migrations"]
