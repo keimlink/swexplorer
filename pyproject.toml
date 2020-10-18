@@ -8,6 +8,9 @@ license = "BSD-3-Clause"
 [tool.poetry.dependencies]
 python = "^3.8"
 Django = {version = "3.1.2", extras = ["argon2"]}
+petl = "1.6.8"
+clients = "1.2"
+jupyter = "1.0.0"
 
 [tool.poetry.dev-dependencies]
 django-debug-toolbar = "3.1.1"
