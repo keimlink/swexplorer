@@ -18,14 +18,27 @@ def index(request):
 def dataset(request, pk):
     dataset = get_object_or_404(Dataset, pk=pk)
     table = etl.fromcsv(dataset.path)
+    explore = request.GET.get("explore", [])
+    fields = etl.header(table)
     limit = int(request.GET.get("limit", "10"))
+    if explore:
+        explore = explore.split(",")
+        if len(explore) > 1:
+            table = etl.aggregate(table, key=explore, aggregation=len, value=explore).rename(
+                "value", "count"
+            )
+        show_load_more = False
+    else:
+        table = etl.head(table, limit)
+        show_load_more = limit < len(table)
     html = etl.MemorySource()
-    table.addrownumbers().head(limit).tohtml(html)
+    table.addrownumbers().tohtml(html)
     html = html.getvalue().decode().replace("class='petl'", "class='table table-striped'")
-    show_load_more = limit < len(table)
     context = {
         "dataset": dataset,
         "dataset_html": html,
+        "explore": explore,
+        "fields": fields,
         "limit": limit + 10,
         "show_load_more": show_load_more,
     }
