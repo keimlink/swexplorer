@@ -5,7 +5,7 @@ Demonstrative project to browse characters fetched from [SWAPI](https://github.c
 ## Prerequisites
 
 - [Python](https://www.python.org/) >= 3.8 (automatically installed if [pyenv](https://github.com/pyenv/pyenv) is available)
-- [Poetry](https://python-poetry.org/)
+- [Poetry](https://python-poetry.org/) >= 1.0.0 (might not work with Poetry >= 1.1.0 on macOS)
 
 ## Installation
 

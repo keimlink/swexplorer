@@ -29,6 +29,4 @@ set -o pipefail
 if command -v pyenv >/dev/null 2>&1; then
   pyenv install --skip-existing
 fi
-# Create virtual environment manually, Poetry has a problem creating it using virtualenv
-python -m venv .venv
-poetry install --remove-untracked
+poetry install
