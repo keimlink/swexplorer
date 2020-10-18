@@ -1,0 +1,48 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
+        <title>{% block title %}Star Wars Explorer{% endblock title %}</title>
+    </head>
+    <body>
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #aaa;">
+                <a class="navbar-brand" href="{% url "characters:index" %}">
+                    <img src="{% static "img/lightsaber.svg" %}" width="30" height="30" alt="Lightsaber" loading="lazy">
+                    Star Wars Explorer
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-link active" href="{% url "characters:index" %}">Characters</a>
+                    </div>
+                </div>
+            </nav>
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+            {% block content %}
+            {% endblock content %}
+            <footer>
+                <small>
+                    Lightsaber icon made by <a href="https://www.flaticon.com/authors/nhor-phai" title="Nhor Phai">Nhor Phai</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+                </small>
+            </footer>
+        </div>
+        <script src="{% static "js/jquery-3.5.1.slim.min.js" %}"></script>
+        <script src="{% static "js/bootstrap.bundle.min.js" %}"></script>
+    </body>
+</html>

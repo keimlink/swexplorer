@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{ block.super }} - Character Datasets
+{% endblock title %}
+
+{% block content %}
+    <h1>
+        Character Datasets
+        <a class="btn btn-outline-success" href="{% url "characters:download" %}" role="button">
+            Fetch
+        </a>
+    </h1>
+    {% if datasets.count %}
+        <table class="table table-hover table-sm">
+            <tbody>
+                {% for dataset in datasets %}
+                    <tr>
+                        <td><a href="{% url "characters:dataset" dataset.id %}">{{ dataset.created_at }}</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Please fetch a dataset using the green button!</p>
+    {% endif %}
+{% endblock content %}

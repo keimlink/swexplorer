@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{ block.super }} - Character Dataset {{ dataset }}
+{% endblock title %}
+
+{% block content %}
+    <h4>
+        Character Dataset {{ dataset }}<br>
+        <small class="text-muted">{{ dataset.created_at }}</small>
+    </h4>
+    {{ dataset_html|safe }}
+    {% if show_load_more %}
+    <div>
+        <a class="btn btn-outline-success btn-block btn-sm" href="{% url "characters:dataset" dataset.pk %}?limit={{ limit }}" role="button">
+            Load More
+        </a>
+    </div>
+    {% endif %}
+{% endblock content %}
