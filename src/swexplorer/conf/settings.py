@@ -141,3 +141,20 @@ PASSWORD_HASHERS = [
 # IP addresses marked as “internal” that can use the debug_toolbar
 # https://docs.djangoproject.com/en/3.1/ref/settings/#internal-ips
 INTERNAL_IPS = [".localhost", "127.0.0.1", "[::1]"]
+
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+        },
+    },
+    "loggers": {
+        "swexplorer.apps": {
+            "handlers": ["console"],
+            "level": "DEBUG",
+        }
+    },
+}
