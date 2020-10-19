@@ -11,7 +11,7 @@
     </h4>
     {% url "characters:dataset" dataset.pk as dataset_url %}
     <div class="btn-group" role="group" aria-label="Explore dataset">
-        <small>Select two fields<br>to filter by:</small>
+        <small>Select fields<br>to filter by:</small>
         {% for field in fields %}
             <a
                 class="btn {% if field in explore %}btn-dark{% else %}btn-light{% endif %}"
